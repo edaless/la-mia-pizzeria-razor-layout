@@ -9,9 +9,6 @@ che viene generata di default nel nuovo progetto che avete creato.
 
 
 
-4. Creare una List<int> di 20 numeri interi 
-(generati random da 1 a 90, 1 e 90 inclusi) 
-e mostrare in pagina solo i numeri compresi tra 20 e 70
 
 5. Stampare in pagina la data e l'ora attuale (usando la classe DateTime) 
 con il formato anno-mese-giorno ore:minuti:secondi
@@ -93,9 +90,6 @@ Stampare dentro uno span il risultato.
 
 @{
     string frase = "nel mezzo del cammin di nostra vita";
-
-
-
     int M = 0;
 
     for (int i = 0; i < frase.Count(); i++)
@@ -108,7 +102,6 @@ Stampare dentro uno span il risultato.
     } 
 }
 
-
 <div>
     <div>
         nella frase
@@ -119,13 +112,37 @@ Stampare dentro uno span il risultato.
     <div>
         ci sono @M "a"
     </div>
-    @frase[0]
+
 
 </div>
 
 
+<!-- 
+4. Creare una List<int>
+    di 20 numeri interi
+    (generati random da 1 a 90, 1 e 90 inclusi)
+    e mostrare in pagina solo i numeri compresi tra 20 e 70 
+-->
 
+@{
+    List<int> numbers = new List<int>();
+    Random rnd = new Random();
 
+    for (int i = 0; i < 20; i++)
+    {
+        numbers.Add(rnd.Next(1, 90));        
+    }
+
+    foreach (int number in numbers)
+    {
+        if (number > 20 && number < 70)
+        {
+            <div>
+                @number
+            </div>
+        }
+    }
+}
 
 
 
