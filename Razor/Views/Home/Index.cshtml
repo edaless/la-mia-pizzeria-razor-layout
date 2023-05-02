@@ -9,10 +9,6 @@ che viene generata di default nel nuovo progetto che avete creato.
 
 
 
-
-5. Stampare in pagina la data e l'ora attuale (usando la classe DateTime) 
-con il formato anno-mese-giorno ore:minuti:secondi
-
 6. Partendo dalla data di oggi (usando la classe DateTime) 
 stampare in pagina
 a. la data di 7 giorni fa
@@ -148,5 +144,16 @@ Stampare dentro uno span il risultato.
 
 
 
+<!-- 
+5. Stampare in pagina la data e l'ora attuale (usando la classe DateTime) 
+con il formato anno-mese-giorno ore:minuti:secondi 
+-->
+
+@{
+    DateTime date1 = DateTime.Now;
+}
 
 
+<div>
+    @date1.ToString("yyyy/MM/dd HH:mm:ss")
+</div>
