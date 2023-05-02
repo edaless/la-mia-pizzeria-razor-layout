@@ -9,9 +9,6 @@ che viene generata di default nel nuovo progetto che avete creato.
 
 
 
-2. Creare una funzione che stampa la somma dei numeri che vanno da 1 a n 
-(con n passato come parametro - n incluso)
-Stampare dentro uno span il risultato.
 
 3. Contare quante volte la lettera a è presente nalla frase 
 "nel mezzo del cammin di nostra vita" e stampare questo valore in pagina
@@ -47,13 +44,47 @@ e mese di oggi ma tra un anno
 }
 
 
+
 <!-- 
 1. Dichiarare una variabile valorizzandola con il nostro nome.
 Dichiarare un'altra variabile valorizzandola con il nostro cognome.
 Stampare il nostro nome e cognome all'interno di un tag h2. 
 -->
 
+
 <h2>
     @nome
     @cognome
 </h2>
+
+
+<!-- 
+2. Creare una funzione che stampa la somma dei numeri che vanno da 1 a n 
+(con n passato come parametro - n incluso)
+Stampare dentro uno span il risultato. 
+ -->
+
+
+@{
+
+    int sommaN (int N){
+        int result = 0;
+        for(int i = 1; i <= N; i++){
+            result += i;
+        }
+
+        return result;
+
+
+    }
+}
+
+@{int N = 3;}
+<span>
+    somma da 1 a @N è: 
+    <b>
+@sommaN(N)
+    </b>
+</span>
+
+
