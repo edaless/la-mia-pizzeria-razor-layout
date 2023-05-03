@@ -7,17 +7,6 @@ che trovate nel file esercizi-razor.txt
 Svolgeteli tutti all’interno della view Index del controller HomeController
 che viene generata di default nel nuovo progetto che avete creato.
 
-
-
-6. Partendo dalla data di oggi (usando la classe DateTime) 
-stampare in pagina
-a. la data di 7 giorni fa
-b. che giorno della settimana è oggi 
-(il risultato dovrà essere il nome del giorno (Lunedì, Martedì, ...)
-c. che giorno della settimana sarà nello stesso giorno 
-e mese di oggi ma tra un anno 
-(il risultato dovrà essere il nome del giorno (Lunedì, Martedì, ...)
-
  -->
 
 
@@ -112,6 +101,7 @@ Stampare dentro uno span il risultato.
 
 </div>
 
+<br>
 
 <!-- 
 4. Creare una List<int>
@@ -119,7 +109,14 @@ Stampare dentro uno span il risultato.
     (generati random da 1 a 90, 1 e 90 inclusi)
     e mostrare in pagina solo i numeri compresi tra 20 e 70 
 -->
+@{
+    int min = 20;
+    int max = 70;
+}
 
+<div>
+    Numeri fra @min e @max
+</div>
 @{
     List<int> numbers = new List<int>();
     Random rnd = new Random();
@@ -131,7 +128,7 @@ Stampare dentro uno span il risultato.
 
     foreach (int number in numbers)
     {
-        if (number > 20 && number < 70)
+        if (number > min && number < max)
         {
             <div>
                 @number
@@ -142,6 +139,7 @@ Stampare dentro uno span il risultato.
 
 
 
+<br>
 
 
 <!-- 
@@ -149,11 +147,75 @@ Stampare dentro uno span il risultato.
 con il formato anno-mese-giorno ore:minuti:secondi 
 -->
 
+<div>
+    data di oggi:
+</div>
 @{
-    DateTime date1 = DateTime.Now;
+    DateTime oggi = DateTime.Now;
+
+    //primo modo
+    //@oggi.ToString("yyyy/MM/dd   HH:mm:ss")
+
+
+
+    //secondo modo
+    int anno = int.Parse(@oggi.ToString("yyyy"));
+    int mese = int.Parse(@oggi.ToString("MM"));
+    int giorno = int.Parse(@oggi.ToString("dd"));
+
+    int ora = int.Parse(@oggi.ToString("HH"));
+    int minuti = int.Parse(@oggi.ToString("mm"));
+    int secondi = int.Parse(@oggi.ToString("ss"));
 }
 
 
+
 <div>
-    @date1.ToString("yyyy/MM/dd HH:mm:ss")
+    @anno/@mese/@giorno   @ora:@minuti:@secondi
 </div>
+
+
+
+
+
+
+
+
+<!-- 
+6. Partendo dalla data di oggi (usando la classe DateTime) 
+stampare in pagina
+a. la data di 7 giorni fa
+b. che giorno della settimana è oggi 
+(il risultato dovrà essere il nome del giorno (Lunedì, Martedì, ...)
+c. che giorno della settimana sarà 
+nello stesso giorno e mese di oggi ma tra un anno 
+(il risultato dovrà essere il nome del giorno (Lunedì, Martedì, ...) 
+-->
+
+@{
+    int Ngiorni = 7;
+    DateTime d2 = DateTime.Now.AddDays(-7);
+}
+<div>
+    data di @Ngiorni giorni fa:
+</div>
+
+<div>
+    @d2.ToString("yyyy/MM/dd   HH:mm:ss");
+</div>
+<div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
